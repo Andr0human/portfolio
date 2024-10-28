@@ -759,7 +759,7 @@ h1, h2, h3, h4, h5, h6, figure {
 	.desc{
 		display: table-cell;
 		vertical-align: middle;
-		height: 270px;
+		height: 370px;
 		background: $brand-white;
 		opacity: 0;
 		@include transition(.3s);
