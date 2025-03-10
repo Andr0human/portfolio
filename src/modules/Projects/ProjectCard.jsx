@@ -72,7 +72,7 @@ const ProjectCard = ({ title, description, url, demoLink, githubLink, techStack 
                     onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#0056b3')}
                     onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#007bff')}
                   >
-                    Live Demo
+                    Live
                   </button>
                 </a>
               )}
