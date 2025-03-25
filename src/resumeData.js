@@ -80,13 +80,13 @@ export const resumeData = {
   },
   projects: [
     {
-      title: 'Chessmate',
+      title: 'CPTrackr',
       description:
-        'A feature-rich chess application built with Unity, offering an AI-powered opponent using the Minimax algorithm with Alpha-Beta Pruning. Designed for Windows, it delivers an immersive and responsive gameplay experience with a sleek UI and smooth animations.',
-      url: 'project_chessmate.webp',
-      demoLink: '',
-      githubLink: 'https://github.com/Andr0human/ChessMate',
-      techStack: ['Unity', 'C#', 'C++'],
+        'CPTrackr project is a web application designed to help competitive programmers track, manage, and prepare for coding contests across multiple platforms like Codeforces, CodeChef, and LeetCode.',
+      url: 'project_cptrackr.webp',
+      demoLink: 'https://project.cp-trackr.ayushsinha.dev',
+      githubLink: 'https://github.com/Andr0human/CPTrackr',
+      techStack: ['JavaScript', 'React.js', 'Node.js', 'Express', 'TypeScript'],
     },
     {
       title: 'JobNest',
@@ -95,7 +95,16 @@ export const resumeData = {
       url: 'project_jobnest.webp',
       demoLink: 'https://project.job-nest.ayushsinha.dev',
       githubLink: 'https://github.com/Andr0human/Job-Nest',
-      techStack: ['React', 'Node.js', 'Express', 'MongoDB'],
+      techStack: ['React.js', 'Node.js', 'Express', 'MongoDB'],
+    },
+    {
+      title: 'Chessmate',
+      description:
+        'A feature-rich chess application built with Unity, offering an AI-powered opponent using the Minimax algorithm with Alpha-Beta Pruning. Designed for Windows, it delivers an immersive and responsive gameplay experience with a sleek UI and smooth animations.',
+      url: 'project_chessmate.webp',
+      demoLink: '',
+      githubLink: 'https://github.com/Andr0human/ChessMate',
+      techStack: ['Unity', 'C#', 'C++'],
     },
     {
       title: 'SignStream',
