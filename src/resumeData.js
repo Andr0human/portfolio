@@ -84,7 +84,7 @@ export const resumeData = {
       description:
         "CPTrackr project is a web application designed to help competitive programmers track, manage, and prepare for coding contests across multiple platforms like Codeforces, CodeChef, and LeetCode.",
       url: "project_cptrackr.webp",
-      demoLink: "https://project.cp-trackr.ayushsinha.dev",
+      demoLink: "https://cptrackr.ayushsinha.dev",
       githubLink: "https://github.com/Andr0human/CPTrackr",
       techStack: ["JavaScript", "React.js", "Node.js", "Express", "TypeScript"],
     },
@@ -109,9 +109,9 @@ export const resumeData = {
       description:
         "JobNest is a comprehensive job searching and tracking platform designed to help users manage their applications efficiently. It features a dynamic job tracking dashboard with analytics, a user-friendly interface, and OAuth-based authentication for secure access.",
       url: "project_jobnest.webp",
-      demoLink: "https://project.job-nest.ayushsinha.dev",
+      demoLink: "https://jobnest.ayushsinha.dev",
       githubLink: "https://github.com/Andr0human/Job-Nest",
-      techStack: ["React.js", "Node.js", "Express", "MongoDB"],
+      techStack: ["React.js", "Node.js", "Express", "Ant Design", "MongoDB"],
     },
     {
       title: "SignStream",
@@ -120,7 +120,7 @@ export const resumeData = {
       url: "project_slr.webp",
       demoLink: "",
       githubLink: "https://github.com/Andr0human/Sign-Language-Recognition",
-      techStack: ["Python", "TensorFlow", "OpenCV"],
+      techStack: ["Python", "TensorFlow", "OpenCV", "MediaPipe"],
     },
   ],
 };
