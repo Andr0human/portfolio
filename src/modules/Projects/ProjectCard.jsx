@@ -12,6 +12,9 @@ const StyledCard = styled(motion.div)({
   transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
   cursor: 'pointer',
   position: 'relative',
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
   '&:hover': {
     transform: 'translateY(-15px) scale(1.02)',
     boxShadow: '0 25px 50px rgba(0, 0, 0, 0.2)',
@@ -71,6 +74,9 @@ const ContentContainer = styled(CardContent)({
   padding: '25px',
   background: 'white',
   position: 'relative',
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
 });
 
 const TechChip = styled(motion.span)({
@@ -227,8 +233,9 @@ const ProjectCard = ({ title, description, url, demoLink, githubLink, techStack 
           sx={{ 
             color: '#666',
             lineHeight: 1.6,
-            marginBottom: '20px',
             fontSize: '14px',
+            flex: 1,
+            marginBottom: '20px',
           }}
         >
           {description}
@@ -238,7 +245,7 @@ const ProjectCard = ({ title, description, url, demoLink, githubLink, techStack 
           display: 'flex', 
           flexWrap: 'wrap', 
           gap: '6px',
-          marginTop: '15px',
+          marginTop: 'auto',
         }}>
           {techStack?.map((tech, index) => (
             <TechChip
