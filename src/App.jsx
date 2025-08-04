@@ -139,7 +139,7 @@ const App = () => {
             animate="visible"
           >
             <Navbar />
-            <Home aboutme={aboutme} />
+            <HeroSection aboutme={aboutme} />
             <Experience experiences={experiences} education={education} />
             <Projects projects={projects} />
             <Skills skills={skills} />

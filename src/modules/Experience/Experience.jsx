@@ -1,7 +1,8 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { Box, ComponentContainer, Container, Typography } from '../../components';
-import { SchoolIcon, WorkIcon } from '../../components/Icons';
 import { styled } from '@mui/material/styles';
+import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
+import { ComponentContainer, Container, Typography } from '../../components';
+import { SchoolIcon, WorkIcon } from '../../components/Icons';
 import {
   Timeline,
   TimelineConnector,
@@ -387,6 +388,11 @@ const Experience = (props) => {
       />
     </ExperienceContainer>
   );
+};
+
+Experience.propTypes = {
+  experiences: PropTypes.array.isRequired,
+  education: PropTypes.array.isRequired,
 };
 
 export default Experience;

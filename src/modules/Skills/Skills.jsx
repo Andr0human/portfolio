@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+/* eslint-disable react/no-unescaped-entities */
+import { styled } from "@mui/material/styles";
+import { AnimatePresence, motion } from "framer-motion";
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 import {
   Box,
   ComponentContainer,
   Container,
   Typography,
 } from "../../components";
-import { styled } from "@mui/material/styles";
 
 const getSkillIcon = (iconName) => {
   const iconMap = {
@@ -101,7 +103,6 @@ const FilterContainer = styled(Box)({
 const FilterButton = styled(motion.button)(({ active }) => ({
   padding: "12px 24px",
   borderRadius: "25px",
-  border: "none",
   fontSize: "14px",
   fontWeight: "600",
   cursor: "pointer",
@@ -255,7 +256,7 @@ const Skills = ({ skills }) => {
             exit="hidden"
             transition={{ duration: 0.3 }}
           >
-            {filteredSkills.map((skill, index) => (
+            {filteredSkills.map((skill) => (
               <SkillCard
                 key={skill.name}
                 variants={cardVariants}
@@ -284,6 +285,10 @@ const Skills = ({ skills }) => {
       </Container>
     </SkillsContainer>
   );
+};
+
+Skills.propTypes = {
+  skills: PropTypes.array.isRequired,
 };
 
 export default Skills;

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AppBar, Box, styled, Toolbar, Typography, IconButton } from '../../components';
+import { Box, styled, Typography } from '../../components';
 
 const NavContainer = styled(motion.div, {
   shouldForwardProp: (prop) => prop !== 'isvisible',
@@ -185,7 +185,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.02 }}
           >
             <Box display='flex' alignItems='center' gap='2px'>
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <NavItemContainer key={item.label}>
                   <Link
                     to={item.to}

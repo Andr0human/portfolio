@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Box, Card, CardContent, Typography } from '../../components';
 import { styled } from '@mui/material/styles';
+import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { Box, CardContent, Typography } from '../../components';
 
 const StyledCard = styled(motion.div)({
   background: 'linear-gradient(145deg, #ffffff, #f0f0f0)',
@@ -252,6 +253,15 @@ const ProjectCard = ({ title, description, url, demoLink, githubLink, techStack 
       </ContentContainer>
     </StyledCard>
   );
+};
+
+ProjectCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  demoLink: PropTypes.string.isRequired,
+  githubLink: PropTypes.string.isRequired,
+  techStack: PropTypes.array.isRequired,
 };
 
 export default ProjectCard;

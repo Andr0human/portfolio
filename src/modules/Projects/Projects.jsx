@@ -1,8 +1,9 @@
+import { styled } from '@mui/material/styles';
+import { AnimatePresence, motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Box, ComponentContainer, Container, Typography } from '../../components';
-import { styled } from '@mui/material/styles';
 import ProjectCard from './ProjectCard';
 
 const ProjectsContainer = styled(ComponentContainer)({
@@ -209,6 +210,10 @@ const Projects = ({ projects }) => {
       />
     </ProjectsContainer>
   );
+};
+
+Projects.propTypes = {
+  projects: PropTypes.array.isRequired,
 };
 
 export default Projects;

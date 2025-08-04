@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+import PropTypes from 'prop-types';
 import { TypeAnimation } from 'react-type-animation';
 import { Avatar, Box, IconButton, styled, Typography } from '../../components';
 import { EmailIcon, GithubIcon, LinkedInIcon } from '../../components/Icons';
@@ -128,6 +128,10 @@ const HeroSection = (props) => {
       </GlassCard>
     </HomeContainer>
   );
+};
+
+HeroSection.propTypes = {
+  aboutme: PropTypes.object.isRequired,
 };
 
 export default HeroSection;

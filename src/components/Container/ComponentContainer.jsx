@@ -1,7 +1,7 @@
 import { styled } from '@mui/material';
 import { Box } from '../Box';
 
-const ComponentContainer = styled(Box)(({ minHeight, flexDirection }) => ({
+const ComponentContainer = styled(Box)(({ minHeight }) => ({
   width: '100%',
   minHeight: minHeight || '100vh',
   height: 'auto',
