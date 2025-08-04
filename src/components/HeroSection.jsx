@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { TypeAnimation } from 'react-type-animation';
-import { Avatar, Box, IconButton, styled, Typography } from '../../components';
-import { EmailIcon, GithubIcon, LinkedInIcon } from '../../components/Icons';
+import Box from './ui/Box';
+import Avatar from './ui/Avatar';
+import IconButton from './ui/IconButton';
+import Typography from './ui/Typography';
+import { styled } from '@mui/material/styles';
+import { EmailIcon, GithubIcon, LinkedInIcon } from './ui/Icons';
 
 const HomeContainer = styled(Box)({
   minHeight: '100vh',
@@ -48,7 +52,7 @@ const iconVariants = {
   hover: { scale: 1.2, transition: { type: 'spring', stiffness: 300 } },
 };
 
-const HeroSection = (props) => {
+export const HeroSection = (props) => {
   const { aboutme } = props;
 
   const { name, summary } = aboutme;
@@ -133,5 +137,3 @@ const HeroSection = (props) => {
 HeroSection.propTypes = {
   aboutme: PropTypes.object.isRequired,
 };
-
-export default HeroSection;

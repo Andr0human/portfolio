@@ -1,10 +1,15 @@
-import './App.css';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Contact, Experience, HeroSection, Navbar, Projects, Skills } from './modules';
-import { resumeData } from './resumeData';
 import { styled } from '@mui/material/styles';
-import { Typography } from './components';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import './App.css';
+import { ContactMe } from './components/Contact';
+import { Experience } from './components/Experience';
+import { HeroSection } from './components/HeroSection';
+import { Navbar } from './components/Navbar';
+import { Projects } from './components/Projects';
+import { Skills } from './components/Skills';
+import Typography from './components/ui/Typography';
+import { resumeData } from './resumeData';
 
 const LoadingContainer = styled(motion.div)({
   position: 'fixed',
@@ -143,7 +148,7 @@ const App = () => {
             <Experience experiences={experiences} education={education} />
             <Projects projects={projects} />
             <Skills skills={skills} />
-            <Contact />
+            <ContactMe />
           </MainContainer>
         )}
       </AnimatePresence>

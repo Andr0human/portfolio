@@ -1,5 +1,5 @@
 import { styled } from '@mui/material';
-import { Box } from '../Box';
+import Box from '../Box';
 
 const ComponentContainer = styled(Box)(({ minHeight }) => ({
   width: '100%',

@@ -2,7 +2,9 @@ import { styled } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { Box, CardContent, Typography } from '../../components';
+import Box from '../Box';
+import CardContent from './CardContent';
+import Typography from '../Typography';
 
 const StyledCard = styled(motion.div)({
   background: 'linear-gradient(145deg, #ffffff, #f0f0f0)',

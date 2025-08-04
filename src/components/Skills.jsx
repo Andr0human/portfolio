@@ -3,12 +3,9 @@ import { styled } from "@mui/material/styles";
 import { AnimatePresence, motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import {
-  Box,
-  ComponentContainer,
-  Container,
-  Typography,
-} from "../../components";
+import Box from "./ui/Box";
+import { ComponentContainer, Container } from "./ui/Container";
+import Typography from "./ui/Typography";
 
 const getSkillIcon = (iconName) => {
   const iconMap = {
@@ -164,7 +161,7 @@ const SkillName = styled(Typography)({
   margin: 0,
 });
 
-const Skills = ({ skills }) => {
+export const Skills = ({ skills }) => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [filteredSkills, setFilteredSkills] = useState(skills);
 
@@ -290,5 +287,3 @@ const Skills = ({ skills }) => {
 Skills.propTypes = {
   skills: PropTypes.array.isRequired,
 };
-
-export default Skills;

@@ -1,8 +1,9 @@
 import { styled } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { ComponentContainer, Container, Typography } from '../../components';
-import { SchoolIcon, WorkIcon } from '../../components/Icons';
+import { ComponentContainer, Container } from './ui/Container';
+import Typography from './ui/Typography';
+import { SchoolIcon, WorkIcon } from './ui/Icons';
 import {
   Timeline,
   TimelineConnector,
@@ -10,7 +11,7 @@ import {
   TimelineDot,
   TimelineItem,
   TimelineSeparator,
-} from '../../components/Timeline';
+} from './ui/Timeline';
 
 const ExperienceContainer = styled(ComponentContainer)({
   background: 'linear-gradient(180deg, #e2e8f0 0%, #f8fafc 50%, #e2e8f0 100%)',
@@ -133,7 +134,7 @@ const cardVariants = {
   },
 };
 
-const Experience = (props) => {
+export const Experience = (props) => {
   const { experiences, education: educationData } = props;
 
   return (
@@ -394,5 +395,3 @@ Experience.propTypes = {
   experiences: PropTypes.array.isRequired,
   education: PropTypes.array.isRequired,
 };
-
-export default Experience;

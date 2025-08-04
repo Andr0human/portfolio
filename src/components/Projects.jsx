@@ -3,8 +3,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Box, ComponentContainer, Container, Typography } from '../../components';
-import ProjectCard from './ProjectCard';
+import Box from './ui/Box';
+import { ComponentContainer, Container } from './ui/Container';
+import Typography from './ui/Typography';
+import { ProjectCard } from './ui/Card';
 
 const ProjectsContainer = styled(ComponentContainer)({
   background: 'linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%)',
@@ -118,7 +120,7 @@ const containerVariants = {
   },
 };
 
-const Projects = ({ projects }) => {
+export const Projects = ({ projects }) => {
   return (
     <ProjectsContainer id='projects'>
       <Container maxWidth='lg'>
@@ -215,5 +217,3 @@ const Projects = ({ projects }) => {
 Projects.propTypes = {
   projects: PropTypes.array.isRequired,
 };
-
-export default Projects;
