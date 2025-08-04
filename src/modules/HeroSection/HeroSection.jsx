@@ -48,7 +48,7 @@ const iconVariants = {
   hover: { scale: 1.2, transition: { type: 'spring', stiffness: 300 } },
 };
 
-const Home = (props) => {
+const HeroSection = (props) => {
   const { aboutme } = props;
 
   const { name, summary } = aboutme;
@@ -89,7 +89,11 @@ const Home = (props) => {
           {summary}
         </Typography>
         <IconContainer>
-          <motion.div variants={iconVariants} whileHover='hover'>
+          <motion.div 
+            variants={iconVariants} 
+            whileHover='hover'
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
             <IconButton
               href='https://www.linkedin.com/in/ayushsinha3199'
               target='_blank'
@@ -98,7 +102,11 @@ const Home = (props) => {
               <LinkedInIcon size={30} />
             </IconButton>
           </motion.div>
-          <motion.div variants={iconVariants} whileHover='hover'>
+          <motion.div 
+            variants={iconVariants} 
+            whileHover='hover'
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
             <IconButton
               href='https://github.com/Andr0human'
               target='_blank'
@@ -107,7 +115,11 @@ const Home = (props) => {
               <GithubIcon size={30} />
             </IconButton>
           </motion.div>
-          <motion.div variants={iconVariants} whileHover='hover'>
+          <motion.div 
+            variants={iconVariants} 
+            whileHover='hover'
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
             <IconButton href='mailto:ayushsinha3199@gmail.com' sx={{ color: 'white' }}>
               <EmailIcon size={30} />
             </IconButton>
@@ -118,4 +130,4 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+export default HeroSection;

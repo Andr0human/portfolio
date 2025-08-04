@@ -1,0 +1,78 @@
+/* Skills section specific styles */
+
+/* Enhance the skill card hover effects */
+.skill-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+}
+
+/* Custom animations for skill icons */
+@keyframes skillIconFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+}
+
+.skill-icon-animate {
+  animation: skillIconFloat 3s ease-in-out infinite;
+}
+
+/* Enhanced gradient for filter buttons */
+.filter-button-gradient {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass morphism effect for skill cards */
+.glass-skill-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .skills-grid-mobile {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+  }
+  
+  .skill-card-mobile {
+    padding: 20px 15px;
+  }
+  
+  .skill-icon-mobile {
+    font-size: 32px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid-mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .filter-buttons-mobile {
+    gap: 8px;
+  }
+  
+  .filter-button-mobile {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
