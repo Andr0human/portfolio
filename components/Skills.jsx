@@ -1,48 +1,10 @@
 'use client';
-/* eslint-disable react/no-unescaped-entities */
 import { styled } from "@mui/material/styles";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
 import Box from "./ui/Box";
 import { ComponentContainer, Container } from "./ui/Container";
 import Typography from "./ui/Typography";
-
-const getSkillIcon = (iconName) => {
-  const iconMap = {
-    js: "🟨",
-    javascript: "🟨",
-    typescript: "🔷",
-    react: "⚛️",
-    nextjs: "▲",
-    html: "🧡",
-    css: "🎨",
-    tailwind: "🌊",
-    nodejs: "💚",
-    express: "🚀",
-    nestjs: "🔴",
-    python: "🐍",
-    django: "🌿",
-    mongodb: "🍃",
-    postgresql: "🐘",
-    mysql: "🐬",
-    redis: "🔴",
-    graphql: "💜",
-    docker: "🐳",
-    aws: "☁️",
-    git: "📝",
-    github: "🐙",
-    cicd: "🔄",
-    jest: "🃏",
-    clickhouse: "📊",
-    grafana: "📈",
-    cloudwatch: "👁️",
-    githubactions: "⚙️",
-    okta: "🔐",
-    kubernetes: "⎈",
-  };
-  return iconMap[iconName.toLowerCase()] || "⚡";
-};
 
 const SkillsContainer = styled(ComponentContainer)({
   background: "linear-gradient(180deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%)",
@@ -94,108 +56,156 @@ const SectionSubtitle = styled(Typography)({
   zIndex: 2,
 });
 
-const FilterContainer = styled(Box)({
-  display: "flex",
-  justifyContent: "center",
-  flexWrap: "wrap",
-  gap: "12px",
-  marginBottom: "50px",
-  position: "relative",
-  zIndex: 2,
-});
-
-const FilterButton = styled(motion.button, {
-  shouldForwardProp: (prop) => prop !== 'active',
-})(({ active }) => ({
-  padding: "12px 24px",
-  borderRadius: "25px",
-  fontSize: "14px",
-  fontWeight: "600",
-  cursor: "pointer",
-  background: active
-    ? "linear-gradient(135deg, #667eea, #764ba2)"
-    : "rgba(255, 255, 255, 0.9)",
-  color: active ? "white" : "#475569",
-  boxShadow: active
-    ? "0 8px 25px rgba(102, 126, 234, 0.3)"
-    : "0 4px 15px rgba(0, 0, 0, 0.1)",
-  backdropFilter: "blur(10px)",
-  border: active ? "none" : "1px solid rgba(255, 255, 255, 0.3)",
-  "&:hover": {
-    transform: "translateY(-2px)",
-    boxShadow: active
-      ? "0 12px 35px rgba(102, 126, 234, 0.4)"
-      : "0 8px 25px rgba(0, 0, 0, 0.15)",
-  },
-}));
-
-const SkillsGrid = styled(motion.div)({
+const BentoGrid = styled(Box)(({ theme }) => ({
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+  gridTemplateColumns: "1fr",
   gap: "20px",
   position: "relative",
   zIndex: 2,
-  "@media (max-width: 768px)": {
-    gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-    gap: "15px",
+  width: "100%",
+  [theme.breakpoints.up("md")]: {
+    gridTemplateColumns: "repeat(2, 1fr)",
+  },
+}));
+
+const FeaturedCard = styled(motion.div)({
+  gridColumn: "1 / -1",
+  background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+  borderRadius: "20px",
+  padding: "32px",
+  boxShadow: "0 10px 40px rgba(102, 126, 234, 0.35)",
+  position: "relative",
+  overflow: "hidden",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: "1px",
+    background: "rgba(255, 255, 255, 0.25)",
+  },
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    top: "-60px",
+    right: "-60px",
+    width: "200px",
+    height: "200px",
+    borderRadius: "50%",
+    background: "rgba(255, 255, 255, 0.06)",
+    pointerEvents: "none",
   },
 });
 
-const SkillCard = styled(motion.div)({
+const StandardCard = styled(motion.div)({
   background: "rgba(255, 255, 255, 0.9)",
-  borderRadius: "20px",
-  padding: "25px",
-  textAlign: "center",
-  border: "1px solid rgba(255, 255, 255, 0.3)",
   backdropFilter: "blur(20px)",
-  boxShadow: "0 8px 25px rgba(0, 0, 0, 0.1)",
-  cursor: "pointer",
+  borderRadius: "20px",
+  padding: "28px",
+  border: "1px solid rgba(255, 255, 255, 0.3)",
+  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+  position: "relative",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: "4px",
+    background: "linear-gradient(90deg, #667eea, #764ba2)",
+    borderRadius: "20px 20px 0 0",
+  },
 });
 
-const SkillIcon = styled(motion.div)({
-  fontSize: "40px",
-  marginBottom: "15px",
-  height: "60px",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+const FeaturedGroupName = styled(Typography)({
+  fontWeight: "800",
+  fontSize: "13px",
+  letterSpacing: "0.12em",
+  textTransform: "uppercase",
+  color: "rgba(255, 255, 255, 0.95)",
 });
 
-const SkillName = styled(Typography)({
+const StandardGroupName = styled(Typography)({
+  fontWeight: "700",
+  fontSize: "13px",
+  letterSpacing: "0.08em",
+  textTransform: "uppercase",
+  color: "#475569",
+});
+
+const FeaturedBadge = styled(Box)({
+  display: "inline-block",
+  background: "rgba(255, 255, 255, 0.2)",
+  color: "rgba(255, 255, 255, 0.92)",
+  fontSize: "11px",
   fontWeight: "600",
+  padding: "3px 12px",
+  borderRadius: "20px",
+  letterSpacing: "0.04em",
+  border: "1px solid rgba(255, 255, 255, 0.3)",
+  marginLeft: "10px",
+});
+
+const FeaturedChip = styled(motion.span)({
+  display: "inline-block",
+  padding: "7px 18px",
+  borderRadius: "20px",
+  fontSize: "13px",
+  fontWeight: "600",
+  background: "rgba(255, 255, 255, 0.18)",
+  color: "white",
+  border: "1px solid rgba(255, 255, 255, 0.3)",
+  backdropFilter: "blur(8px)",
+  cursor: "default",
+  "&:hover": {
+    background: "rgba(255, 255, 255, 0.30)",
+    borderColor: "rgba(255, 255, 255, 0.6)",
+  },
+  transition: "background 0.15s, border-color 0.15s",
+});
+
+const Chip = styled(motion.span)({
+  display: "inline-block",
+  padding: "6px 16px",
+  borderRadius: "20px",
+  fontSize: "13px",
+  fontWeight: "500",
+  background: "rgba(255, 255, 255, 0.9)",
   color: "#334155",
-  fontSize: "14px",
-  margin: 0,
+  border: "1px solid #e2e8f0",
+  boxShadow: "0 2px 6px rgba(0, 0, 0, 0.06)",
+  cursor: "default",
+  "&:hover": {
+    background: "rgba(102, 126, 234, 0.08)",
+    borderColor: "#667eea",
+    color: "#4f46e5",
+  },
+  transition: "background 0.15s, border-color 0.15s, color 0.15s",
 });
 
 const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.9 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-const categories = [
-  { id: "all", name: "All Skills" },
-  { id: "frontend", name: "Frontend" },
-  { id: "backend", name: "Backend" },
-  { id: "tools", name: "Tools & DevOps" },
-];
+const chipVariants = {
+  hidden: { opacity: 0, scale: 0.85 },
+  visible: (i) => ({
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.25, ease: "easeOut", delay: i * 0.04 },
+  }),
+};
 
 export const Skills = ({ skills }) => {
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [filteredSkills, setFilteredSkills] = useState(skills);
-
-  useEffect(() => {
-    const filtered =
-      activeCategory === "all"
-        ? skills
-        : skills.filter((skill) => skill.category === activeCategory);
-    setFilteredSkills(filtered);
-  }, [activeCategory, skills]);
+  const featuredGroup = skills.find((g) => g.label != null);
+  const standardGroups = skills.filter((g) => g.label == null);
 
   return (
     <SkillsContainer id="skills">
@@ -210,58 +220,79 @@ export const Skills = ({ skills }) => {
             <SectionTitle variant="h3">My Skills</SectionTitle>
           </SectionHeader>
           <SectionSubtitle variant="h6">
-            I've worked with a variety of technologies across the full stack development spectrum.
+            Technologies I use across production systems, side projects, and beyond.
           </SectionSubtitle>
         </Box>
 
-        <FilterContainer>
-          {categories.map((category) => (
-            <FilterButton
-              key={category.id}
-              active={activeCategory === category.id}
-              onClick={() => setActiveCategory(category.id)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {category.name}
-            </FilterButton>
-          ))}
-        </FilterContainer>
-
-        <AnimatePresence mode="wait">
-          <SkillsGrid
-            key={activeCategory}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            transition={{ duration: 0.3 }}
-          >
-            {filteredSkills.map((skill) => (
-              <SkillCard
-                key={skill.name}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <BentoGrid>
+            {featuredGroup && (
+              <FeaturedCard
                 variants={cardVariants}
-                whileHover={{
-                  y: -8,
-                  scale: 1.02,
-                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.15)",
-                  background: "rgba(255, 255, 255, 0.95)",
-                  transition: { duration: 0.2, ease: "easeOut" },
-                }}
+                whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
               >
-                <SkillIcon whileHover={{ scale: 1.2, rotate: 5, transition: { duration: 0.2 } }}>
-                  {getSkillIcon(skill.icon)}
-                </SkillIcon>
-                <SkillName variant="body2">{skill.name}</SkillName>
-              </SkillCard>
+                <Box display="flex" alignItems="center" mb={3}>
+                  <FeaturedGroupName variant="body2">
+                    {featuredGroup.group}
+                  </FeaturedGroupName>
+                  <FeaturedBadge>{featuredGroup.label}</FeaturedBadge>
+                </Box>
+                <Box display="flex" flexWrap="wrap" gap="10px">
+                  {featuredGroup.items.map((item, i) => (
+                    <FeaturedChip
+                      key={item}
+                      variants={chipVariants}
+                      custom={i}
+                      whileHover={{ scale: 1.06 }}
+                    >
+                      {item}
+                    </FeaturedChip>
+                  ))}
+                </Box>
+              </FeaturedCard>
+            )}
+
+            {standardGroups.map((group) => (
+              <StandardCard
+                key={group.group}
+                variants={cardVariants}
+                whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
+              >
+                <Box display="flex" alignItems="center" mb={2}>
+                  <StandardGroupName variant="body2">{group.group}</StandardGroupName>
+                </Box>
+                <Box display="flex" flexWrap="wrap" gap="10px">
+                  {group.items.map((item, i) => (
+                    <Chip
+                      key={item}
+                      variants={chipVariants}
+                      custom={i}
+                      whileHover={{ scale: 1.06 }}
+                    >
+                      {item}
+                    </Chip>
+                  ))}
+                </Box>
+              </StandardCard>
             ))}
-          </SkillsGrid>
-        </AnimatePresence>
+          </BentoGrid>
+        </motion.div>
       </Container>
     </SkillsContainer>
   );
 };
 
 Skills.propTypes = {
-  skills: PropTypes.array.isRequired,
+  skills: PropTypes.arrayOf(
+    PropTypes.shape({
+      group: PropTypes.string.isRequired,
+      label: PropTypes.string,
+      items: PropTypes.arrayOf(PropTypes.string).isRequired,
+    })
+  ).isRequired,
 };
