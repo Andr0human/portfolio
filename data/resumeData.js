@@ -87,15 +87,6 @@ export const resumeData = {
   ],
   projects: [
     {
-      title: "CPTrackr",
-      description:
-        "Built a unified contest aggregator that normalizes live competition data from Codeforces, CodeChef, and LeetCode into a single dashboard. Designed a Node.js/Express backend in TypeScript to handle inconsistent third-party APIs, with a React frontend for filtering contests by platform, date, and duration.",
-      url: "project_cptrackr.webp",
-      demoLink: "https://cptrackr.ayushsinha.dev",
-      githubLink: "https://github.com/Andr0human/CPTrackr",
-      techStack: ["JavaScript", "React.js", "Node.js", "Express", "TypeScript"],
-    },
-    {
       title: "Chessmate",
       description:
         "Built a real-time multiplayer chess platform supporting 50+ concurrent game rooms using WebSockets (Socket.IO) with low-latency event handling. Integrated a 2400+ Elo chess engine with configurable difficulty and maintained a 95% Lighthouse performance score across devices. Designed the game-state sync architecture to handle disconnections and reconnections without losing match state.",
@@ -110,6 +101,15 @@ export const resumeData = {
         "Node.js",
         "C++",
       ],
+    },
+    {
+      title: "CPTrackr",
+      description:
+        "Built a unified contest aggregator that normalizes live competition data from Codeforces, CodeChef, and LeetCode into a single dashboard. Designed a Node.js/Express backend in TypeScript to handle inconsistent third-party APIs, with a React frontend for filtering contests by platform, date, and duration.",
+      url: "project_cptrackr.webp",
+      demoLink: "https://cptrackr.ayushsinha.dev",
+      githubLink: "https://github.com/Andr0human/CPTrackr",
+      techStack: ["JavaScript", "React.js", "Node.js", "Express", "TypeScript"],
     },
     {
       title: "JobNest",
