@@ -16,9 +16,7 @@ const NavContainer = styled(motion.div, {
   border: "1px solid rgba(102, 126, 234, 0.15)",
   position: "fixed",
   top: 20,
-  left: 0,
-  right: 0,
-  margin: "0 auto",
+  right: 20,
   width: "fit-content",
   borderRadius: "50px",
   zIndex: 1000,
@@ -28,7 +26,7 @@ const NavContainer = styled(motion.div, {
 
 const NavItemContainer = styled(motion.div)({
   position: "relative",
-  margin: "0 5px",
+  margin: "0 1px",
 });
 
 const NavItem = styled(Typography, {
@@ -38,7 +36,7 @@ const NavItem = styled(Typography, {
   textTransform: "uppercase",
   fontSize: "13px",
   fontWeight: "600",
-  padding: "10px 16px",
+  padding: "8px 12px",
   cursor: "pointer",
   transition: "all 0.3s ease",
   borderRadius: "25px",
