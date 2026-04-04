@@ -262,9 +262,6 @@ export const Experience = (props) => {
                   <Typography variant='subtitle2' sx={{ color: '#718096', marginBottom: '15px', fontStyle: 'italic' }}>
                     {edu.year}
                   </Typography>
-                  <Typography variant='body2' sx={{ color: '#4a5568', lineHeight: 1.6 }}>
-                    {edu.description}
-                  </Typography>
                 </ContentCard>
               </TimelineContent>
             </TimelineItem>

@@ -1,9 +1,9 @@
 export const resumeData = {
   aboutme: {
     name: "Ayush Sinha",
-    role: "Full-Stack Developer",
+    role: "Full Stack Engineer",
     summary:
-      "I'm a Full-Stack Developer passionate about building scalable and efficient web applications. I love exploring new technologies, optimizing performance, and solving complex problems. In my free time, you'll find me coding, experimenting with new tools, or gaming.",
+      "Full Stack Engineer with 2.5+ years building production systems. Currently at Opslyft working on cloud infrastructure, ClickHouse analytics, and AWS-based backend systems. I care about performance, observability, and writing code that scales.",
     socialLinks: [
       {
         name: "linkedin",
@@ -21,29 +21,31 @@ export const resumeData = {
   },
   education: [
     {
-      degree: "Bachelors Degree",
+      degree: "B.Tech in Computer Science",
       school: "Galgotias College of Engineering and Technology",
       year: "2019 - 2023",
-      description:
-        "I completed my Bachelor of Technology degree in Computer Science from Galgotias College of Engineering and Technology, located in Greater Noida, Uttar Pradesh.",
-    },
-    {
-      degree: "Senior Secondary Education",
-      school: "Hope Hall Foundation School, New Delhi",
-      year: "2017 - 2019",
-      description:
-        "I completed my Senior Secondary Education with a focus on science subjects at Hope Hall Foundation School in New Delhi. This period provided a strong academic foundation and helped shape my interest in pursuing a career in technology.",
     },
   ],
   experiences: [
     {
+      role: "Full Stack Engineer",
+      company: "Opslyft",
+      duration: "Aug 2025 - Present",
+      achievements: [
+        "Implemented a structured audit logging system to track user actions, enabling admin-level visibility; integrated with AWS CloudWatch and Grafana for centralized monitoring.",
+        "Optimized ClickHouse queries for large-scale cost analytics by implementing database-level pagination and aggregation, significantly reducing data transfer (2GB+) and improving query performance and system stability.",
+        "Redesigned data export workflow for large datasets by offloading query results to AWS S3, enabling reliable download of GB-scale reports and eliminating server crashes caused by in-memory processing.",
+        "Integrated authentication and authorization flows using AWS Cognito and Okta, improving security and user access management.",
+        "Leveraged AWS services (S3, Lambda, DynamoDB, ECS, Cognito) to build and support scalable backend workflows and cloud-based deployments.",
+      ],
+    },
+    {
       role: "Associate Software Developer",
       company: "Successive Digital",
-      duration: "Sept 2023 - Present",
+      duration: "Sept 2023 - Mar 2025",
       achievements: [
-        "Executed a pivotal role in the WASL project, personally contributing to the successful integration of 2500+ images onto the main website.",
-        "Implemented optimization strategies resulting in a noteworthy 40% improvement in response time for bulk job listing data uploads, thereby streamlining system efficiency and elevating overall performance.",
         "Migrated Mongoose from version 5 to 8 across 12+ projects, improving database performance, security, and compatibility with modern MongoDB features.",
+        "Redesigned the script integration logic for the Dentsu Connect project, achieving a 30% reduction in website load times and enhancing user experience.",
       ],
     },
     {
@@ -61,8 +63,6 @@ export const resumeData = {
     { name: "TypeScript", icon: "typescript", category: "frontend" },
     { name: "React", icon: "react", category: "frontend" },
     { name: "Next.js", icon: "nextjs", category: "frontend" },
-    { name: "HTML5", icon: "html", category: "frontend" },
-    { name: "CSS3", icon: "css", category: "frontend" },
     { name: "Tailwind CSS", icon: "tailwind", category: "frontend" },
     { name: "Node.js", icon: "nodejs", category: "backend" },
     { name: "Express", icon: "express", category: "backend" },
@@ -73,19 +73,22 @@ export const resumeData = {
     { name: "PostgreSQL", icon: "postgresql", category: "backend" },
     { name: "MySQL", icon: "mysql", category: "backend" },
     { name: "Redis", icon: "redis", category: "backend" },
+    { name: "ClickHouse", icon: "clickhouse", category: "backend" },
     { name: "GraphQL", icon: "graphql", category: "backend" },
     { name: "Docker", icon: "docker", category: "tools" },
+    { name: "Kubernetes", icon: "kubernetes", category: "tools" },
     { name: "AWS", icon: "aws", category: "tools" },
     { name: "Git", icon: "git", category: "tools" },
-    { name: "GitHub", icon: "github", category: "tools" },
-    { name: "CI/CD", icon: "cicd", category: "tools" },
-    { name: "Jest", icon: "jest", category: "tools" },
+    { name: "GitHub Actions", icon: "githubactions", category: "tools" },
+    { name: "Grafana", icon: "grafana", category: "tools" },
+    { name: "CloudWatch", icon: "cloudwatch", category: "tools" },
+    { name: "Okta", icon: "okta", category: "tools" },
   ],
   projects: [
     {
       title: "CPTrackr",
       description:
-        "CPTrackr project is a web application designed to help competitive programmers track, manage, and prepare for coding contests across multiple platforms like Codeforces, CodeChef, and LeetCode.",
+        "Built a unified contest aggregator that normalizes live competition data from Codeforces, CodeChef, and LeetCode into a single dashboard. Designed a Node.js/Express backend in TypeScript to handle inconsistent third-party APIs, with a React frontend for filtering contests by platform, date, and duration.",
       url: "project_cptrackr.webp",
       demoLink: "https://cptrackr.ayushsinha.dev",
       githubLink: "https://github.com/Andr0human/CPTrackr",
@@ -94,7 +97,7 @@ export const resumeData = {
     {
       title: "Chessmate",
       description:
-        "A responsive chess application built with React and Next.js, offering multiplayer gameplay and AI opponents. Features include intuitive drag-and-drop moves, move highlighting, customizable board orientation, and real-time gameplay powered by Socket.IO for seamless multiplayer interaction.",
+        "Built a real-time multiplayer chess platform supporting 50+ concurrent game rooms using WebSockets (Socket.IO) with low-latency event handling. Integrated a 2400+ Elo chess engine with configurable difficulty and maintained a 95% Lighthouse performance score across devices. Designed the game-state sync architecture to handle disconnections and reconnections without losing match state.",
       url: "project_chessmate.webp",
       demoLink: "https://chessmate.ayushsinha.dev",
       githubLink: "https://github.com/Andr0human/ChessMate",
@@ -110,7 +113,7 @@ export const resumeData = {
     {
       title: "JobNest",
       description:
-        "JobNest is a comprehensive job searching and tracking platform designed to help users manage their applications efficiently. It features a dynamic job tracking dashboard with analytics, a user-friendly interface, and OAuth-based authentication for secure access.",
+        "Built a full-stack job application tracker with OAuth-based authentication and an analytics dashboard for tracking application status across stages. Designed a modular RESTful API in Express with MongoDB, and implemented dynamic filtering and status workflows on the React frontend.",
       url: "project_jobnest.webp",
       demoLink: "https://jobnest.ayushsinha.dev",
       githubLink: "https://github.com/Andr0human/Job-Nest",
@@ -119,7 +122,7 @@ export const resumeData = {
     {
       title: "SignStream",
       description:
-        "An innovative deep-learning model designed for real-time sign language recognition. Using a CNN-LSTM architecture, it enables accurate gesture detection with an interactive and optimized UI for low-latency performance.",
+        "Trained a CNN-LSTM model for real-time sign language recognition, using MediaPipe to extract hand landmarks from live video frames and feeding them into a custom TensorFlow model for gesture classification. Optimized the inference pipeline to achieve low-latency predictions on live webcam input.",
       url: "project_slr.webp",
       demoLink: "",
       githubLink: "https://github.com/Andr0human/Sign-Language-Recognition",

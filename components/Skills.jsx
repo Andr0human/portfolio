@@ -34,6 +34,12 @@ const getSkillIcon = (iconName) => {
     github: "🐙",
     cicd: "🔄",
     jest: "🃏",
+    clickhouse: "📊",
+    grafana: "📈",
+    cloudwatch: "👁️",
+    githubactions: "⚙️",
+    okta: "🔐",
+    kubernetes: "⎈",
   };
   return iconMap[iconName.toLowerCase()] || "⚡";
 };
