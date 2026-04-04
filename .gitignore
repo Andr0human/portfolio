@@ -28,3 +28,6 @@ out
 # Claude Code
 CLAUDE.md
 .claude/
+
+# Misc
+public/data/
