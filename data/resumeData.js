@@ -97,7 +97,7 @@ export const resumeData = {
       ],
       description:
         "Built a load-testing tool that sustains 1000+ concurrent virtual users per process by running async VU loops on Node.js Worker Threads with pooled undici agents, avoiding the 1-thread-per-user overhead. Used it to profile a production Vercel/MongoDB-Atlas API and identified a capacity knee between 50-100 VUs — doubling load from 100 to 200 VUs yielded only 1.26x throughput (63% scaling efficiency) while p95 latency grew 3.8x (1.6s to 6.0s) and error rate hit 8%. Designed a deterministic rules engine with 10 single-run and cross-run rules that auto-detects capacity knees, scaling breakdowns, and latency regressions from raw metrics.",
-      url: "/hammr/image (5).png",
+      url: "/project_hammr.webp",
       demoLink: "",
       githubLink: "https://github.com/Andr0human/Hammr",
       techStack: [
