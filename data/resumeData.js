@@ -87,23 +87,64 @@ export const resumeData = {
   ],
   projects: [
     {
-      title: "Chessmate",
+      title: "Hammr",
+      tagline: "Load-testing tool that finds where your API breaks — not just how fast it is.",
+      highlights: [
+        { value: "1000+", label: "Concurrent VUs" },
+        { value: "63%", label: "Scaling efficiency detected" },
+        { value: "3.8x", label: "p95 latency regression caught" },
+        { value: "10", label: "Auto-diagnostic rules" },
+      ],
       description:
-        "Built a real-time multiplayer chess platform supporting 50+ concurrent game rooms using WebSockets (Socket.IO) with low-latency event handling. Integrated a 2400+ Elo chess engine with configurable difficulty and maintained a 95% Lighthouse performance score across devices. Designed the game-state sync architecture to handle disconnections and reconnections without losing match state.",
+        "Built a load-testing tool that sustains 1000+ concurrent virtual users per process by running async VU loops on Node.js Worker Threads with pooled undici agents, avoiding the 1-thread-per-user overhead. Used it to profile a production Vercel/MongoDB-Atlas API and identified a capacity knee between 50-100 VUs — doubling load from 100 to 200 VUs yielded only 1.26x throughput (63% scaling efficiency) while p95 latency grew 3.8x (1.6s to 6.0s) and error rate hit 8%. Designed a deterministic rules engine with 10 single-run and cross-run rules that auto-detects capacity knees, scaling breakdowns, and latency regressions from raw metrics.",
+      url: "/hammr/image (5).png",
+      demoLink: "",
+      githubLink: "https://github.com/Andr0human/Hammr",
+      techStack: [
+        "TypeScript",
+        "Node.js",
+        "undici",
+        "Express",
+        "Socket.IO",
+        "React",
+        "Next.js",
+        "ClickHouse",
+        "Docker",
+        "AWS",
+      ],
+    },
+    {
+      title: "Chessmate",
+      tagline: "Real-time multiplayer chess powered by Elsa, a self-built 2400+ Elo C++ engine.",
+      highlights: [
+        { value: "50+", label: "Concurrent rooms" },
+        { value: "2400+", label: "Elo (Elsa engine)" },
+        { value: "95%", label: "Lighthouse score" },
+        { value: "C++", label: "Custom engine" },
+      ],
+      description:
+        "Built a real-time multiplayer chess platform using WebSockets (Socket.IO), supporting 50+ concurrent game rooms with low-latency communication, and shipped a frontend that scores 95% on Lighthouse across devices. Integrated Elsa — a self-built 2400+ Elo chess engine written in C++ — with adjustable difficulty levels for single-player mode.",
       url: "project_chessmate.webp",
       demoLink: "https://chessmate.ayushsinha.dev",
       githubLink: "https://github.com/Andr0human/ChessMate",
       techStack: [
-        "React.js",
+        "JavaScript",
+        "React",
         "Next.js",
         "Socket.IO",
+        "Chess.js",
         "Tailwind CSS",
-        "Node.js",
-        "C++",
       ],
     },
     {
       title: "CPTrackr",
+      tagline: "One dashboard for every competitive programming contest across the major judges.",
+      highlights: [
+        { value: "3", label: "Platforms unified" },
+        { value: "Live", label: "Contest feed" },
+        { value: "TS", label: "Typed end-to-end" },
+        { value: "REST", label: "Normalized API" },
+      ],
       description:
         "Built a unified contest aggregator that normalizes live competition data from Codeforces, CodeChef, and LeetCode into a single dashboard. Designed a Node.js/Express backend in TypeScript to handle inconsistent third-party APIs, with a React frontend for filtering contests by platform, date, and duration.",
       url: "project_cptrackr.webp",
@@ -113,6 +154,13 @@ export const resumeData = {
     },
     {
       title: "JobNest",
+      tagline: "Full-stack job tracker with OAuth and analytics across application stages.",
+      highlights: [
+        { value: "OAuth", label: "Secure auth flow" },
+        { value: "REST", label: "Modular API" },
+        { value: "MongoDB", label: "Flexible schema" },
+        { value: "Analytics", label: "Stage funnel" },
+      ],
       description:
         "Built a full-stack job application tracker with OAuth-based authentication and an analytics dashboard for tracking application status across stages. Designed a modular RESTful API in Express with MongoDB, and implemented dynamic filtering and status workflows on the React frontend.",
       url: "project_jobnest.webp",
@@ -122,6 +170,13 @@ export const resumeData = {
     },
     {
       title: "SignStream",
+      tagline: "Real-time sign language recognition from webcam input using a CNN-LSTM pipeline.",
+      highlights: [
+        { value: "CNN-LSTM", label: "Model architecture" },
+        { value: "Realtime", label: "Webcam inference" },
+        { value: "MediaPipe", label: "Landmark extraction" },
+        { value: "TF", label: "Custom trained model" },
+      ],
       description:
         "Trained a CNN-LSTM model for real-time sign language recognition, using MediaPipe to extract hand landmarks from live video frames and feeding them into a custom TensorFlow model for gesture classification. Optimized the inference pipeline to achieve low-latency predictions on live webcam input.",
       url: "project_slr.webp",

@@ -47,7 +47,7 @@ const ProjectsStack = styled('div')({
 export const Projects = ({ projects }) => {
   return (
     <ProjectsContainer id='projects'>
-      <Container maxWidth='lg'>
+      <Container maxWidth='xl' sx={{ px: { xs: 3, md: 6, lg: 8 } }}>
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}

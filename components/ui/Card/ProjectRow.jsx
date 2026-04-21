@@ -71,6 +71,59 @@ const ProjectNumber = styled(Typography)({
   zIndex: 0,
 });
 
+// ─── Highlight stat card ─────────────────────────────────────────────────────
+
+const HighlightGrid = styled(Box)({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr)',
+  gap: '10px',
+  marginBottom: '24px',
+});
+
+const HighlightCard = styled(Box)({
+  position: 'relative',
+  padding: '14px 16px',
+  borderRadius: '12px',
+  background: 'linear-gradient(135deg, rgba(102,126,234,0.08) 0%, rgba(118,75,162,0.06) 100%)',
+  border: '1px solid rgba(102,126,234,0.18)',
+  transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
+  '&:hover': {
+    transform: 'translateY(-2px)',
+    borderColor: 'rgba(102,126,234,0.45)',
+    boxShadow: '0 8px 20px rgba(102,126,234,0.15)',
+  },
+});
+
+const HighlightValue = styled(Typography)({
+  fontSize: '20px',
+  fontWeight: '800',
+  lineHeight: 1.1,
+  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  marginBottom: '2px',
+});
+
+const HighlightLabel = styled(Typography)({
+  fontSize: '11px',
+  fontWeight: '600',
+  color: '#64748b',
+  letterSpacing: '0.3px',
+  textTransform: 'uppercase',
+});
+
+const Tagline = styled(Typography)({
+  fontSize: '17px',
+  fontWeight: '600',
+  color: '#1a1a2e',
+  lineHeight: 1.45,
+  marginBottom: '20px',
+  paddingLeft: '14px',
+  borderLeft: '3px solid',
+  borderImage: 'linear-gradient(180deg, #667eea, #764ba2) 1',
+});
+
 // ─── Tech chip ───────────────────────────────────────────────────────────────
 
 const TechChip = styled('span')({
@@ -126,16 +179,18 @@ const SecondaryButton = styled(motion.a)({
 
 // ─── Row wrapper ──────────────────────────────────────────────────────────────
 
-const RowWrapper = styled(Box)({
+const RowWrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'imageFirst',
+})(({ imageFirst }) => ({
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
+  gridTemplateColumns: imageFirst ? '1.35fr 1fr' : '1fr 1.35fr',
   gap: '60px',
   alignItems: 'center',
   '@media (max-width: 768px)': {
     gridTemplateColumns: '1fr',
     gap: '32px',
   },
-});
+}));
 
 const Divider = styled(Box)({
   width: '100%',
@@ -145,7 +200,7 @@ const Divider = styled(Box)({
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
-const ProjectRow = ({ title, description, url, demoLink, githubLink, techStack, index }) => {
+const ProjectRow = ({ title, tagline, highlights, description, url, demoLink, githubLink, techStack, index }) => {
   const isEven = index % 2 === 0;
   const num = String(index + 1).padStart(2, '0');
 
@@ -182,12 +237,23 @@ const ProjectRow = ({ title, description, url, demoLink, githubLink, techStack, 
         >
           {title}
         </Typography>
+        {tagline && <Tagline>{tagline}</Tagline>}
+        {highlights && highlights.length > 0 && (
+          <HighlightGrid>
+            {highlights.map((h, i) => (
+              <HighlightCard key={i}>
+                <HighlightValue>{h.value}</HighlightValue>
+                <HighlightLabel>{h.label}</HighlightLabel>
+              </HighlightCard>
+            ))}
+          </HighlightGrid>
+        )}
         <Typography
-          variant="body1"
+          variant="body2"
           sx={{
-            color: '#4a5568',
-            lineHeight: 1.8,
-            fontSize: '15px',
+            color: '#64748b',
+            lineHeight: 1.7,
+            fontSize: '14px',
             marginBottom: '24px',
           }}
         >
@@ -245,7 +311,7 @@ const ProjectRow = ({ title, description, url, demoLink, githubLink, techStack, 
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      <RowWrapper>
+      <RowWrapper imageFirst={isEven}>
         {isEven ? (
           <>
             {imageSide}
@@ -264,6 +330,8 @@ const ProjectRow = ({ title, description, url, demoLink, githubLink, techStack, 
 
 ProjectRow.propTypes = {
   title: PropTypes.string.isRequired,
+  tagline: PropTypes.string,
+  highlights: PropTypes.array,
   description: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   demoLink: PropTypes.string,
