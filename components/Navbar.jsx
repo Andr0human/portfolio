@@ -113,6 +113,7 @@ const buttonVariants = {
 const navItems = [
   { label: "HOME", to: "home", icon: "🏠" },
   { label: "EXPERIENCE", to: "experience", icon: "💼" },
+  { label: "OPEN SOURCE", to: "opensource", icon: "🌐" },
   { label: "PROJECTS", to: "projects", icon: "🚀" },
   { label: "SKILLS", to: "skills", icon: "⚡" },
   { label: "CONTACT", to: "contact", icon: "📧" },

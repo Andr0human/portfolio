@@ -4,7 +4,7 @@ import './globals.css';
 export const metadata = {
   title: 'Ayush Sinha | Full Stack Engineer',
   description:
-    'Full Stack Engineer with 2+ years building production systems. Currently at Opslyft working on cloud infrastructure, ClickHouse analytics, and AWS-based backend systems.',
+    'Full Stack Engineer with 3+ years building production systems. Currently at Yotta Data Services, working across Vue, Node.js, and the Apache CloudStack engine behind Apiculus.',
 };
 
 export default function RootLayout({ children }) {

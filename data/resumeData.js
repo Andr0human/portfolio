@@ -3,7 +3,7 @@ export const resumeData = {
     name: "Ayush Sinha",
     role: "Full Stack Engineer",
     summary:
-      "Full Stack Engineer with 2.5+ years building production systems. Currently at Opslyft working on cloud infrastructure, ClickHouse analytics, and AWS-based backend systems. I care about performance, observability, and writing code that scales.",
+      "Full Stack Engineer with 3+ years building production systems. I work at Yotta Data Services on Apiculus, a multi-tenant cloud management platform, across the Vue frontend, the Node.js services behind it, and the Apache CloudStack engine underneath. Most of my recent work has been performance debugging: finding why something is slow, or why it only breaks under load.",
     socialLinks: [
       {
         name: "linkedin",
@@ -28,9 +28,18 @@ export const resumeData = {
   ],
   experiences: [
     {
+      role: "Application Engineer",
+      company: "Yotta Data Services",
+      duration: "Jun 2026 - Present",
+      achievements: [
+        "Diagnosed and fixed a 504 timeout in the multi-service account-export pipeline (Node.js, RabbitMQ, MySQL) by profiling each stage and eliminating a ~22MB subscriptions over-fetch, a double JSON serialization, an O(n²) reshaping loop, and an N+1 query, cutting end-to-end export time from 50s+ to ~10s and restoring a feature that was failing at the gateway limit.",
+        "Fixed an OOM crash-loop in a shared logging worker caused by byte-expansion of large Node Buffers, restoring stable logging and making it ~169x faster on multi-MB payloads.",
+      ],
+    },
+    {
       role: "Full Stack Engineer",
       company: "Opslyft",
-      duration: "Aug 2025 - Present",
+      duration: "Aug 2025 - Apr 2026",
       achievements: [
         "Implemented a structured audit logging system to track user actions, enabling admin-level visibility; integrated with AWS CloudWatch and Grafana for centralized monitoring.",
         "Optimized ClickHouse queries for large-scale cost analytics by implementing database-level pagination and aggregation, significantly reducing data transfer (2GB+) and improving query performance and system stability.",
@@ -42,7 +51,7 @@ export const resumeData = {
     {
       role: "Associate Software Developer",
       company: "Successive Digital",
-      duration: "Sept 2023 - Mar 2025",
+      duration: "Sep 2023 - Mar 2025",
       achievements: [
         "Migrated Mongoose from version 5 to 8 across 12+ projects, improving database performance, security, and compatibility with modern MongoDB features.",
         "Redesigned the script integration logic for the Dentsu Connect project, achieving a 30% reduction in website load times and enhancing user experience.",
@@ -50,7 +59,7 @@ export const resumeData = {
     },
     {
       role: "Associate Software Developer",
-      company: "Pheture Studios Pvt Ltd",
+      company: "Pheuture Studios Pvt. Ltd.",
       duration: "Nov 2022 - Apr 2023",
       achievements: [
         "Conducted 20+ interviews to evaluate technical skills and cultural fit, aiding in building a robust engineering team.",
@@ -58,11 +67,36 @@ export const resumeData = {
       ],
     },
   ],
+  openSource: [
+    {
+      project: "Apache CloudStack",
+      org: "Apache Software Foundation",
+      date: "Sep 2026",
+      status: "Merged",
+      milestone: "Release 4.22.2",
+      title:
+        "Fixed a concurrency race that silently left VM network interfaces attached",
+      prNumber: "#13700",
+      prLink: "https://github.com/apache/cloudstack/pull/13700",
+      repoLink: "https://github.com/apache/cloudstack",
+      problem:
+        "CloudStack is the orchestration engine underneath Apiculus. If two API calls detached different NICs from the same VM at the same time, the async work-job queue treated them as duplicates and ran only one of them. Both calls still returned success, so the VM kept a NIC that the control plane had already written off as removed.",
+      solution:
+        "The pending-work-job lookup keyed only on VM ID, the same mistake that had been fixed on the attach path years earlier. I re-keyed the deduplication on the NIC UUID so two detaches of different NICs stop colliding, and added regression tests that fail on the old code and pass on the new. One of the CloudStack committers reproduced the race on a live deployment before approving: two detach calls five seconds apart, both returning success with the NICs still attached, both cleared once the patch was in.",
+      highlights: [
+        { value: "3", label: "Regression tests" },
+        { value: "3", label: "Committer approvals" },
+        { value: "149", label: "CI smoke tests green" },
+        { value: "+106/-3", label: "Lines changed" },
+      ],
+      techStack: ["Java", "Apache CloudStack", "Concurrency", "Async Job Queue"],
+    },
+  ],
   skills: [
     {
       group: "Production",
-      label: "Used at Opslyft",
-      items: ["AWS", "ClickHouse", "Node.js", "React", "TypeScript", "Okta", "Grafana", "CloudWatch", "Kubernetes"],
+      label: "Used at Yotta & Opslyft",
+      items: ["AWS", "Apache CloudStack", "Vue.js", "Java", "Node.js", "React", "TypeScript", "ClickHouse", "RabbitMQ", "MySQL", "Kubernetes", "Grafana", "Okta"],
     },
     {
       group: "Core Stack",
@@ -88,7 +122,7 @@ export const resumeData = {
   projects: [
     {
       title: "Hammr",
-      tagline: "Load-testing tool that finds where your API breaks — not just how fast it is.",
+      tagline: "Load-testing tool that finds where your API breaks, not just how fast it is.",
       highlights: [
         { value: "1000+", label: "Concurrent VUs" },
         { value: "63%", label: "Scaling efficiency detected" },
@@ -96,7 +130,7 @@ export const resumeData = {
         { value: "10", label: "Auto-diagnostic rules" },
       ],
       description:
-        "Built a load-testing tool that sustains 1000+ concurrent virtual users per process by running async VU loops on Node.js Worker Threads with pooled undici agents, avoiding the 1-thread-per-user overhead. Used it to profile a production Vercel/MongoDB-Atlas API and identified a capacity knee between 50-100 VUs — doubling load from 100 to 200 VUs yielded only 1.26x throughput (63% scaling efficiency) while p95 latency grew 3.8x (1.6s to 6.0s) and error rate hit 8%. Designed a deterministic rules engine with 10 single-run and cross-run rules that auto-detects capacity knees, scaling breakdowns, and latency regressions from raw metrics.",
+        "Built a load-testing tool that sustains 1000+ concurrent virtual users per process by running async VU loops on Node.js Worker Threads with pooled undici agents, rather than a thread per user. I pointed it at a production Vercel/MongoDB-Atlas API and found a capacity knee between 50 and 100 VUs: doubling load from 100 to 200 VUs bought only 1.26x more throughput (63% scaling efficiency), while p95 latency grew 3.8x, from 1.6s to 6.0s, and errors hit 8%. A rules engine sits on top with 10 rules, some per-run and some across runs, so those knees and latency regressions get flagged from the raw metrics instead of eyeballed off a graph.",
       url: "/project_hammr.webp",
       demoLink: "",
       githubLink: "https://github.com/Andr0human/Hammr",
@@ -115,15 +149,15 @@ export const resumeData = {
     },
     {
       title: "Chessmate",
-      tagline: "Real-time multiplayer chess powered by Elsa, a self-built 2400+ Elo C++ engine.",
+      tagline: "Real-time multiplayer chess powered by Elsa, a self-built 2500+ Elo C++ engine.",
       highlights: [
         { value: "50+", label: "Concurrent rooms" },
-        { value: "2400+", label: "Elo (Elsa engine)" },
+        { value: "2500+", label: "Elo (Elsa engine)" },
         { value: "95%", label: "Lighthouse score" },
         { value: "C++", label: "Custom engine" },
       ],
       description:
-        "Built a real-time multiplayer chess platform using WebSockets (Socket.IO), supporting 50+ concurrent game rooms with low-latency communication, and shipped a frontend that scores 95% on Lighthouse across devices. Integrated Elsa — a self-built 2400+ Elo chess engine written in C++ — with adjustable difficulty levels for single-player mode.",
+        "Built a real-time multiplayer chess platform on WebSockets (Socket.IO) that holds 50+ concurrent game rooms, with a frontend scoring 95% on Lighthouse across devices. Single-player mode plays against Elsa, a C++ engine I wrote myself. Its v3.0.0 release measures around 2516 CCRL-blitz-equivalent Elo, up 134 Elo on the previous version over 2505 head-to-head games, and the difficulty is adjustable.",
       url: "project_chessmate.webp",
       demoLink: "https://chessmate.ayushsinha.dev",
       githubLink: "https://github.com/Andr0human/ChessMate",
